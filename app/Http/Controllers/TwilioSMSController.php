@@ -3,30 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Twilio\Rest\Client;
 
 class TwilioController extends Controller
 {
-
-
-    function __construct()
-    {
-        $this->sid = 'ACd40df911a63cea4375b1a8166a443a5e';
-        $this->token = '737f5ead1dff6551f9d5ba6efc625a47';
-        $this->twilio_number = '+15017122661';
-        $this->twilio = new Client($this->sid, $this->token);
-    }
-
-
     /**
      * Lấy danh sách sms đến và đi
      *
      */
-    public function index(){
-        $messages = $this->twilio->messages->read();
 
+    public function index(Request $request){
+        $data = $request->all();
+        $messages = $this->twilio->messages->read($data);
         $data = [];
-
         foreach ($messages as $record) {
             array_push($data,[
                 "body"=> $record->body,
@@ -37,6 +25,7 @@ class TwilioController extends Controller
                 "date_created"=> $record->dateCreated,
                 "date_sent"=>$record->dateSent,
                 "date_updated"=> $record->dateUpdated,
+                "sid"=> $record->sid,
             ]);
         }
         return $data;
@@ -51,9 +40,29 @@ class TwilioController extends Controller
             $request->phone,
             array(
                 'from' => $this->twilio_number,
-                'body' => 'I sent this message in under 10 minutes!'
+                'body' => $request->body
+                // ...
             )
         );
+    }
+    /**
+     * Send sms
+     *
+     */
+    public function get(Request $request){
+        $record = $this->twilio->messages($request->sid)->fetch();
+        $data = [
+            "body"=> $record->body,
+            "direction"=> $record->direction,
+            "from"=> $record->from,
+            "status"=> $record->status,
+            "to"=> $record->to,
+            "date_created"=> $record->dateCreated,
+            "date_sent"=>$record->dateSent,
+            "date_updated"=> $record->dateUpdated,
+            "sid"=> $record->sid,
+        ];
+        return $data;
     }
 
 }

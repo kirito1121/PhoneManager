@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("twilio","TwilioController@index");
-Route::post("twilio/send","TwilioController@post");
+Route::get("twilio/sms","TwilioSMSController@index");
+Route::post("twilio/sms/send","TwilioSMSController@post");
+Route::get("twilio/sms/get","TwilioSMSController@get");
+
+Route::get("twilio/voice","TwilioVoiceController@index");
+Route::post("twilio/voice/call","TwilioVoiceController@post");
+// Route::get("twilio/voice/answer","TwilioVoiceController@get");
