@@ -20,4 +20,4 @@ Route::get("twilio/sms/get","TwilioSMSController@get");
 
 Route::get("twilio/voice","TwilioVoiceController@index");
 Route::post("twilio/voice/call","TwilioVoiceController@post");
-// Route::get("twilio/voice/answer","TwilioVoiceController@get");
+Route::get("twilio/voice/get","TwilioVoiceController@get");
