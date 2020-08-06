@@ -2397,7 +2397,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getDataVoiceCall();
     },
     recording: function recording(sid) {
-      axios.post("api/twilio/voice/recording", {
+      axios.get("api/twilio/voice/recording", {
         sid: sid
       }).then(function (response) {
         console.log(response);
@@ -39737,50 +39737,7 @@ var render = function() {
                   "item-key": "name",
                   "loading-text":
                     _vm.data.length == 0 ? "No Data" : "Loading... Please wait"
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "item.start_time",
-                    fn: function(ref) {
-                      var item = ref.item
-                      return [_vm._v(_vm._s(item.start_time.date))]
-                    }
-                  },
-                  {
-                    key: "item.end_time",
-                    fn: function(ref) {
-                      var item = ref.item
-                      return [_vm._v(_vm._s(item.end_time.date))]
-                    }
-                  },
-                  {
-                    key: "item.sid",
-                    fn: function(ref) {
-                      var item = ref.item
-                      return [
-                        _c(
-                          "v-btn",
-                          {
-                            attrs: { icon: "" },
-                            on: {
-                              click: function($event) {
-                                return _vm.recording(item.sid)
-                              }
-                            }
-                          },
-                          [
-                            _c("v-icon", [
-                              _vm._v(
-                                "\n                      mdi-play-circle-outline\n                  "
-                              )
-                            ])
-                          ],
-                          1
-                        )
-                      ]
-                    }
-                  }
-                ])
+                }
               })
             ],
             1

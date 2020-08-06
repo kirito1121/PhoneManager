@@ -207,16 +207,16 @@
           item-key="name"
           :loading-text=" data.length == 0 ? 'No Data' : 'Loading... Please wait'"
         >
-            <template v-slot:item.start_time="{ item }">{{item.start_time.date}}</template>
+            <!-- <template v-slot:item.start_time="{ item }">{{item.start_time.date}}</template>
             <template v-slot:item.end_time="{ item }">{{item.end_time.date}}</template>
             <template v-slot:item.sid="{ item }">
                 <v-btn icon @click="recording(item.sid)">
                     <v-icon>
                         mdi-play-circle-outline
                     </v-icon>
-                </v-btn>
+                </v-btn> -->
                 <!-- {{item.sid}} -->
-            </template>
+            <!-- </template> -->
         </v-data-table>
       </div>
     </v-card>
@@ -305,7 +305,7 @@ export default {
 
     recording(sid){
         axios
-        .post("api/twilio/voice/recording", {
+        .get("api/twilio/voice/recording", {
             sid: sid
         })
         .then((response) => {

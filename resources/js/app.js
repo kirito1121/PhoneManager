@@ -30,6 +30,7 @@ Vue.component('voice-component', require('./components/VoiceComponent.vue').defa
  */
 import vuetify from './plugins/vuetify'
 const app = new Vue({
-    el: '#app',vuetify
+    el: '#app',
+    vuetify,
 });
 
