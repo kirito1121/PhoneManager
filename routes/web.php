@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/sms', function () {
+    return view('sms');
+});
+Route::get('/voice', function () {
+    return view('voice');
+});
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/sms', 'HomeController@index')->name('home');
+// Route::get('/voice', 'HomeController@index');
