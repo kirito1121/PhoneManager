@@ -88,14 +88,6 @@ class TwilioVoiceController extends Controller
                 "url" => "http://demo.twilio.com/docs/voice.xml"
             )
         );
-
-        $recording = $this->twilio->calls($call->sid)
-                    ->recordings
-                    ->create();
-
-        Log::info($call->sid);
-        Log::info($recording->sid);
-
     }
 
     /**
@@ -115,8 +107,10 @@ class TwilioVoiceController extends Controller
      */
     public function recordingVoice(Request $request)
     {
-        $recording = $this->twilio->recordings("RE92baaccd29755e7a2c828c08f6f4957b")
-                    ->fetch();
-        return $recording->sid;
+        $recordings = $this->twilio->recordings
+                     ->read(["callSid" => $request->sid]);
+        foreach ($recordings as $record) {
+            return($record->sid);
+        }
     }
 }

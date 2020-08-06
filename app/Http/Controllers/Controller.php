@@ -15,7 +15,7 @@ class Controller extends BaseController
     function __construct()
     {
         $this->sid = 'ACd40df911a63cea4375b1a8166a443a5e';
-        $this->token = 'b7b3800601ac37034c825bcab64ce3bb';
+        $this->token = '27bceb352670e9be406f02b6a8b8dacd';
         $this->twilio_number = '+12029331442';
         $this->twilio = new Client($this->sid, $this->token);
     }
