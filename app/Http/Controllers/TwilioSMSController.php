@@ -11,21 +11,20 @@ class TwilioSMSController extends Controller
      *
      */
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $data = $request->all();
         $messages = $this->twilio->messages->read($data);
         $data = [];
         foreach ($messages as $record) {
-            array_push($data,[
-                "body"=> $record->body,
-                "direction"=> $record->direction,
-                "from"=> $record->from,
-                "status"=> $record->status,
-                "to"=> $record->to,
-                "date_created"=> $record->dateCreated,
-                "date_sent"=>$record->dateSent,
-                "date_updated"=> $record->dateUpdated,
-                "sid"=> $record->sid,
+            array_push($data, [
+                "body" => $record->body,
+                "direction" => $record->direction,
+                "from" => $record->from,
+                "status" => $record->status,
+                "to" => $record->to,
+                "date_sent" => $record->dateSent,
+                "sid" => $record->sid,
             ]);
         }
         return $data;
@@ -34,14 +33,13 @@ class TwilioSMSController extends Controller
      * Send sms
      *
      */
-    public function post(Request $request){
+    public function post(Request $request)
+    {
         $this->twilio->messages->create(
-            // Where to send a text message (your cell phone?)
             $request->phone,
             array(
                 'from' => $this->twilio_number,
-                'body' => $request->body
-                // ...
+                'body' => $request->body,
             )
         );
     }
@@ -49,18 +47,19 @@ class TwilioSMSController extends Controller
      * Send sms
      *
      */
-    public function get(Request $request){
+    public function get(Request $request)
+    {
         $record = $this->twilio->messages($request->sid)->fetch();
         $data = [
-            "body"=> $record->body,
-            "direction"=> $record->direction,
-            "from"=> $record->from,
-            "status"=> $record->status,
-            "to"=> $record->to,
-            "date_created"=> $record->dateCreated,
-            "date_sent"=>$record->dateSent,
-            "date_updated"=> $record->dateUpdated,
-            "sid"=> $record->sid,
+            "body" => $record->body,
+            "direction" => $record->direction,
+            "from" => $record->from,
+            "status" => $record->status,
+            "to" => $record->to,
+            "date_created" => $record->dateCreated,
+            "date_sent" => $record->dateSent,
+            "date_updated" => $record->dateUpdated,
+            "sid" => $record->sid,
         ];
         return $data;
     }

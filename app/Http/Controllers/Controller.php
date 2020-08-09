@@ -12,7 +12,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    function __construct()
+    public function __construct()
     {
         $this->sid = 'ACd40df911a63cea4375b1a8166a443a5e';
         $this->token = '27bceb352670e9be406f02b6a8b8dacd';

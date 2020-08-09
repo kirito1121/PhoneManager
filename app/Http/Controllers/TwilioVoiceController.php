@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Twilio\TwiML\VoiceResponse;
 
 class TwilioVoiceController extends Controller
@@ -68,7 +67,7 @@ class TwilioVoiceController extends Controller
             "sid" => $record->sid,
             "status" => $record->status,
             "start_time" => $record->startTime,
-            "end_time" => $record->endTime
+            "end_time" => $record->endTime,
         ];
         return $data;
     }
@@ -85,7 +84,7 @@ class TwilioVoiceController extends Controller
             $this->twilio_number,
             array(
                 "record" => true,
-                "url" => "http://demo.twilio.com/docs/voice.xml"
+                "url" => "http://demo.twilio.com/docs/voice.xml",
             )
         );
     }
@@ -108,9 +107,25 @@ class TwilioVoiceController extends Controller
     public function recordingVoice(Request $request)
     {
         $recordings = $this->twilio->recordings
-                     ->read(["callSid" => $request->sid]);
+            ->read(["callSid" => $request->sid]);
         foreach ($recordings as $record) {
-            return($record->sid);
+            return ($record->sid);
         }
+    }
+
+    public function fetchRecording(Request $request)
+    {
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, "https://api.twilio.com/2010-04-01/Accounts/ACd40df911a63cea4375b1a8166a443a5e/Recordings/$request->re.mp3");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($ch, CURLOPT_USERPWD, 'ACd40df911a63cea4375b1a8166a443a5e' . ':' . '27bceb352670e9be406f02b6a8b8dacd');
+        $result = curl_exec($ch);
+        if (curl_errno($ch)) {
+            echo 'Error:' . curl_error($ch);
+        }
+        curl_close($ch);
+        return $result;
     }
 }

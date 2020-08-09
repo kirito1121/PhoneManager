@@ -23,11 +23,12 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10",
-        "vuetify": "^2.3.7",
+        "vuetify": "^2.3.8",
         "vuetify-loader": "^1.6.0",
         "vuetifyjs-mix-extension": "^0.0.11"
     },
     "dependencies": {
-        "@mdi/font": "^5.4.55"
+        "@mdi/font": "^5.4.55",
+        "vuetify-audio": "^0.3.3"
     }
 }
