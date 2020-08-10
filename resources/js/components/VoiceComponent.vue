@@ -307,22 +307,18 @@
                 </v-data-table>
             </div>
         </v-card>
-        <v-dialog max-width="290" persistent v-model="dialog">
+        <v-dialog max-width="400px" persistent v-model="dialog">
             <v-card>
                 <v-card-title class="headline">Recording </v-card-title>
                 <v-card-text ref="code">
                     <vuetify-audio
                         v-if="re"
                         :file="file"
-                        color="success"
                         downloadable
                     ></vuetify-audio>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <!-- <v-btn @click="copy" color="green darken-1" text
-                        >Copy</v-btn
-                    > -->
                     <v-btn @click="close" color="green darken-1" text
                         >Close</v-btn
                     >
@@ -338,8 +334,6 @@ export default {
     },
     data() {
         return {
-            color: null,
-            btnText: 'Set Color to "Success" (Green)',
             file: null,
             copyS: false,
             re: false,
@@ -448,12 +442,14 @@ export default {
                 "https://api.twilio.com/2010-04-01/Accounts/ACd40df911a63cea4375b1a8166a443a5e/Recordings/" +
                 re +
                 ".mp3";
-            console.log(this.file);
+            console.log("file" +this.file);
         },
 
         close() {
             this.copyS = false;
             this.dialog = false;
+            this.file = null;
+            console.log( "close" + this.file);
         },
 
         copy() {
