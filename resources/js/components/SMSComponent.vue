@@ -62,7 +62,6 @@
                         data.length == 0 ? 'No Data' : 'Loading... Please wait'
                     "
 					class="elevation-1"
-					hide-default-footer
 					item-key="name"
 				>
 					<template

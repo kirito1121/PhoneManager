@@ -2215,7 +2215,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2618,12 +2617,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     VuetifyAudio: function VuetifyAudio() {
@@ -2632,8 +2625,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      color: null,
-      btnText: 'Set Color to "Success" (Green)',
       file: null,
       copyS: false,
       re: false,
@@ -2714,11 +2705,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     fetchRecording: function fetchRecording(re) {
       this.file = "https://api.twilio.com/2010-04-01/Accounts/ACd40df911a63cea4375b1a8166a443a5e/Recordings/" + re + ".mp3";
-      console.log(this.file);
+      console.log("file" + this.file);
     },
     close: function close() {
       this.copyS = false;
       this.dialog = false;
+      this.file = null;
+      console.log("close" + this.file);
     },
     copy: function copy() {
       this.selectText(this.$refs.code);
@@ -39268,7 +39261,6 @@ var render = function() {
                   loading: true,
                   "loading-text":
                     _vm.data.length == 0 ? "No Data" : "Loading... Please wait",
-                  "hide-default-footer": "",
                   "item-key": "name"
                 },
                 scopedSlots: _vm._u([
@@ -40204,7 +40196,6 @@ var render = function() {
                   loading: true,
                   "loading-text":
                     _vm.data.length == 0 ? "No Data" : "Loading... Please wait",
-                  "hide-default-footer": "",
                   "item-key": "name"
                 },
                 scopedSlots: _vm._u([
@@ -40267,7 +40258,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
-          attrs: { "max-width": "290", persistent: "" },
+          attrs: { "max-width": "400px", persistent: "" },
           model: {
             value: _vm.dialog,
             callback: function($$v) {
@@ -40290,11 +40281,7 @@ var render = function() {
                 [
                   _vm.re
                     ? _c("vuetify-audio", {
-                        attrs: {
-                          file: _vm.file,
-                          color: "success",
-                          downloadable: ""
-                        }
+                        attrs: { file: _vm.file, downloadable: "" }
                       })
                     : _vm._e()
                 ],
@@ -96619,8 +96606,8 @@ var opts = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\laragon\www\phone\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\laragon\www\phone\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\laragon\www\sms\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\sms\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

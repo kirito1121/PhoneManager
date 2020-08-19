@@ -287,7 +287,6 @@
                         data.length == 0 ? 'No Data' : 'Loading... Please wait'
                     "
                     class="elevation-1"
-                    hide-default-footer
                     item-key="name"
                 >
                     <template v-slot:item.start_time="{ item }"
@@ -298,7 +297,6 @@
                         >{{ item.end_time.date }}
                         {{ item.start_time.timezone }}</template
                     >
-
                     <template v-slot:item.sid="{ item }">
                         <v-btn @click="recording(item.sid)" icon>
                             <v-icon>mdi-play-circle-outline</v-icon>

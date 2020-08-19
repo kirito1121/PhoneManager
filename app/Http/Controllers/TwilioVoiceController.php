@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Twilio\TwiML\VoiceResponse;
 
 class TwilioVoiceController extends Controller
@@ -85,6 +86,7 @@ class TwilioVoiceController extends Controller
             array(
                 "record" => true,
                 "url" => "http://demo.twilio.com/docs/voice.xml",
+                "twiml" => "<Response><Say>Ahoy there!</Say></Response>"
             )
         );
     }
@@ -96,7 +98,9 @@ class TwilioVoiceController extends Controller
 
     public function receive(Request $request)
     {
+        Log::info("vao day roi");
         $response = new VoiceResponse();
+        $response->dial('(202) 933-1442');
         $response->say('Please leave a message at the beep');
         $response->record();
     }
