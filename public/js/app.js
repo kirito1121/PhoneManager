@@ -2215,42 +2215,133 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      valid: true,
+      success: false,
+      error: false,
+      dialog: false,
+      message: null,
       headers: [{
-        text: 'From',
-        value: 'from'
+        text: "From",
+        value: "from"
       }, {
-        text: 'To',
-        value: 'to'
+        text: "To",
+        value: "to"
       }, {
-        text: 'body',
-        value: 'body'
+        text: "body",
+        value: "body"
       }, {
-        text: 'Direction',
-        value: 'direction'
+        text: "Direction",
+        value: "direction"
       }, {
-        text: 'Status',
-        value: 'status'
+        text: "Status",
+        value: "status"
       }, {
-        text: 'Sid',
-        value: 'sid'
+        text: "Sid",
+        value: "sid"
       }, {
-        text: 'Date Sent',
-        value: 'date_sent'
+        text: "Date Sent",
+        value: "date_sent"
       }],
       menuStart: false,
       modal: false,
       data: [],
-      searchData: {}
+      searchData: {},
+      dataSend: {},
+      phoneRules: [function (v) {
+        return !!v || "Phone number is required";
+      }],
+      bodyRules: [function (v) {
+        return !!v || "Body is required";
+      }]
     };
   },
   methods: {
     getDataSMS: function getDataSMS() {
       var _this = this;
 
-      axios.get('api/twilio/sms', {
+      axios.get("api/twilio/sms", {
         params: this.searchData
       }).then(function (response) {
         _this.data = response.data;
@@ -2263,19 +2354,32 @@ __webpack_require__.r(__webpack_exports__);
       this.data = [];
       this.getDataSMS();
     },
-    recording: function recording(sid) {
-      axios.get('api/twilio/voice/recording', {
-        sid: sid
-      }).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log(error);
-      });
+    close: function close() {
+      this.dataSend = {};
+      this.dialog = false;
+    },
+    send: function send(sid) {
+      var _this2 = this;
+
+      if (this.$refs.form.validate()) {
+        axios.post("api/twilio/sms/send", this.dataSend).then(function (response) {
+          console.log(response);
+          _this2.success = true;
+
+          _this2.close();
+        })["catch"](function (error) {
+          _this2.message = error.message;
+          _this2.error = true;
+          console.log(error);
+
+          _this2.close();
+        });
+      }
     }
   },
   mounted: function mounted() {
     this.getDataSMS();
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   }
 });
 
@@ -39037,6 +39141,70 @@ var render = function() {
     { staticClass: "container" },
     [
       _c(
+        "div",
+        [
+          _vm.success == true
+            ? _c(
+                "v-alert",
+                { attrs: { color: "#38c172" } },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "my-2",
+                      attrs: { icon: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.success = false
+                        }
+                      }
+                    },
+                    [_c("v-icon", [_vm._v(" mdi-close ")])],
+                    1
+                  ),
+                  _vm._v(
+                    "\n            Send SMS success" +
+                      _vm._s(_vm.message) +
+                      "\n        "
+                  )
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.error == true
+            ? _c(
+                "v-alert",
+                { attrs: { dark: "", color: "#e3342f" } },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "my-2",
+                      attrs: { icon: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.error = false
+                        }
+                      }
+                    },
+                    [_c("v-icon", [_vm._v(" mdi-close ")])],
+                    1
+                  ),
+                  _vm._v(
+                    "\n            Send SMS with Error! " +
+                      _vm._s(_vm.message) +
+                      "\n        "
+                  )
+                ],
+                1
+              )
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
         "v-card",
         [
           _c("v-card-text", [_vm._v("SMS Managerment")]),
@@ -39241,6 +39409,28 @@ var render = function() {
                       ],
                       1
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("v-col", { attrs: { cols: "12", md: "4" } }, [
+                    _c(
+                      "div",
+                      { staticClass: "my-2" },
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: { color: "#3490dc", dark: "", small: "" },
+                            on: {
+                              click: function($event) {
+                                _vm.dialog = true
+                              }
+                            }
+                          },
+                          [_vm._v("Send sms")]
+                        )
+                      ],
+                      1
+                    )
                   ])
                 ],
                 1
@@ -39271,7 +39461,7 @@ var render = function() {
                       return [
                         _vm._v(
                           _vm._s(item.date_sent.date) +
-                            " " +
+                            "\n                    " +
                             _vm._s(item.date_sent.timezone)
                         )
                       ]
@@ -39279,6 +39469,112 @@ var render = function() {
                   }
                 ])
               })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "400px", persistent: "" },
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "headline" }, [
+                _vm._v("Send SMS ")
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                { ref: "code" },
+                [
+                  _c(
+                    "v-form",
+                    {
+                      ref: "form",
+                      attrs: { "lazy-validation": "" },
+                      model: {
+                        value: _vm.valid,
+                        callback: function($$v) {
+                          _vm.valid = $$v
+                        },
+                        expression: "valid"
+                      }
+                    },
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Phone Number",
+                          rules: _vm.phoneRules,
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.dataSend.phone,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dataSend, "phone", $$v)
+                          },
+                          expression: "dataSend.phone"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-textarea", {
+                        attrs: {
+                          rules: _vm.bodyRules,
+                          label: "Body",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.dataSend.body,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dataSend, "body", $$v)
+                          },
+                          expression: "dataSend.body"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "green darken-1", text: "" },
+                      on: { click: _vm.close }
+                    },
+                    [_vm._v("Close")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "green darken-1", text: "" },
+                      on: { click: _vm.send }
+                    },
+                    [_vm._v("SEND")]
+                  )
+                ],
+                1
+              )
             ],
             1
           )
@@ -96606,8 +96902,8 @@ var opts = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\laragon\www\sms\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\laragon\www\sms\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\laragon\www\phone\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\laragon\www\phone\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
