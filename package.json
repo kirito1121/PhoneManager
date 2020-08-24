@@ -29,6 +29,7 @@
     },
     "dependencies": {
         "@mdi/font": "^5.4.55",
+        "twilio-client": "^1.12.3",
         "vuetify-audio": "^0.3.3"
     }
 }

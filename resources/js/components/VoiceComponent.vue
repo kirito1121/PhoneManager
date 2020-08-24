@@ -275,6 +275,15 @@
                                 >Search</v-btn
                             >
                         </div>
+                        <div class="my-2">
+                            <v-btn
+                                @click="showDialogCall()"
+                                color="#3490dc"
+                                dark
+                                small
+                                >Make a Call</v-btn
+                            >
+                        </div>
                     </v-col>
                 </v-row>
             </v-card-title>
@@ -323,6 +332,27 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
+        <v-dialog max-width="400px" persistent v-model="dialogCall">
+            <v-card>
+                <v-card-title class="headline">Make a call </v-card-title>
+                <v-card-text>
+                    <v-text-field
+                        v-model="callStatus"
+                        placeholder="Connecting to Twilio..."
+                        label="Status"
+                        disabled
+                    ></v-text-field>
+                    <v-btn disabled> Answer call</v-btn>
+                    <v-btn disabled @click="hangUp()"> Hang up</v-btn>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn @click="closeCall" color="green darken-1" text
+                        >Close</v-btn
+                    >
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </div>
 </template>
 <script>
@@ -332,6 +362,10 @@ export default {
     },
     data() {
         return {
+            dialogCall: false,
+            valid: true,
+            phoneNumber: null,
+            phoneRules: [v => !!v || "Phone number is required"],
             file: null,
             copyS: false,
             re: false,
@@ -389,7 +423,8 @@ export default {
                 "queued"
             ],
             data: [],
-            searchData: {}
+            searchData: {},
+            callStatus: null
         };
     },
 
@@ -440,34 +475,57 @@ export default {
                 "https://api.twilio.com/2010-04-01/Accounts/ACd40df911a63cea4375b1a8166a443a5e/Recordings/" +
                 re +
                 ".mp3";
-            console.log("file" +this.file);
+            console.log("file" + this.file);
         },
+
+        call() {},
 
         close() {
             this.copyS = false;
             this.dialog = false;
             this.file = null;
-            console.log( "close" + this.file);
+        },
+        closeCall() {
+            this.dialogCall = false;
+            this.phoneNumber = null;
+        },
+        showDialogCall() {
+            this.token();
+            this.dialogCall = true;
         },
 
-        copy() {
-            this.selectText(this.$refs.code);
-            document.execCommand("copy");
-            this.copyS = true;
+        updateCallStatus(status) {
+            this.callStatus = status;
         },
-        selectText(element) {
-            var range;
-            if (document.selection) {
-                // IE
-                range = document.body.createTextRange();
-                range.moveToElementText(element);
-                // range.select()
-            } else if (window.getSelection) {
-                range = document.createRange();
-                range.selectNode(element);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-            }
+
+        callCustomer(phoneNumber) {
+            updateCallStatus("Calling " + phoneNumber + "...");
+
+            var params = { phoneNumber: phoneNumber };
+            Twilio.Device.connect(params);
+        },
+
+        // /* Call the support_agent from the home page */
+        callSupport() {
+            updateCallStatus("Calling support...");
+
+            // Our backend will assume that no params means a call to support_agent
+            Twilio.Device.connect();
+        },
+
+        hangUp() {
+            Twilio.Device.disconnectAll();
+        },
+
+        token() {
+            axios
+                .post("api/token")
+                .then(response => {
+                    Twilio.Device.setup(response.data);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
     },
 

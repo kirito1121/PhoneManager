@@ -2721,6 +2721,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     VuetifyAudio: function VuetifyAudio() {
@@ -2729,6 +2759,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      dialogCall: false,
+      valid: true,
+      phoneNumber: null,
+      phoneRules: [function (v) {
+        return !!v || "Phone number is required";
+      }],
       file: null,
       copyS: false,
       re: false,
@@ -2765,7 +2801,8 @@ __webpack_require__.r(__webpack_exports__);
       modal: false,
       status: ["completed", "failed", "undialed", "answered", "busy", "no-answer", "ringing", "canceled", "in-progress", "initiated", "queued"],
       data: [],
-      searchData: {}
+      searchData: {},
+      callStatus: null
     };
   },
   methods: {
@@ -2811,30 +2848,45 @@ __webpack_require__.r(__webpack_exports__);
       this.file = "https://api.twilio.com/2010-04-01/Accounts/ACd40df911a63cea4375b1a8166a443a5e/Recordings/" + re + ".mp3";
       console.log("file" + this.file);
     },
+    call: function call() {},
     close: function close() {
       this.copyS = false;
       this.dialog = false;
       this.file = null;
-      console.log("close" + this.file);
     },
-    copy: function copy() {
-      this.selectText(this.$refs.code);
-      document.execCommand("copy");
-      this.copyS = true;
+    closeCall: function closeCall() {
+      this.dialogCall = false;
+      this.phoneNumber = null;
     },
-    selectText: function selectText(element) {
-      var range;
+    showDialogCall: function showDialogCall() {
+      this.token();
+      this.dialogCall = true;
+    },
+    updateCallStatus: function updateCallStatus(status) {
+      this.callStatus = status;
+    },
+    callCustomer: function callCustomer(phoneNumber) {
+      updateCallStatus("Calling " + phoneNumber + "...");
+      var params = {
+        phoneNumber: phoneNumber
+      };
+      Twilio.Device.connect(params);
+    },
+    // /* Call the support_agent from the home page */
+    callSupport: function callSupport() {
+      updateCallStatus("Calling support..."); // Our backend will assume that no params means a call to support_agent
 
-      if (document.selection) {
-        // IE
-        range = document.body.createTextRange();
-        range.moveToElementText(element); // range.select()
-      } else if (window.getSelection) {
-        range = document.createRange();
-        range.selectNode(element);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-      }
+      Twilio.Device.connect();
+    },
+    hangUp: function hangUp() {
+      Twilio.Device.disconnectAll();
+    },
+    token: function token() {
+      axios.post("api/token").then(function (response) {
+        Twilio.Device.setup(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   mounted: function mounted() {
@@ -40471,6 +40523,26 @@ var render = function() {
                         )
                       ],
                       1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "my-2" },
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: { color: "#3490dc", dark: "", small: "" },
+                            on: {
+                              click: function($event) {
+                                return _vm.showDialogCall()
+                              }
+                            }
+                          },
+                          [_vm._v("Make a Call")]
+                        )
+                      ],
+                      1
                     )
                   ])
                 ],
@@ -40594,6 +40666,87 @@ var render = function() {
                     {
                       attrs: { color: "green darken-1", text: "" },
                       on: { click: _vm.close }
+                    },
+                    [_vm._v("Close")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "400px", persistent: "" },
+          model: {
+            value: _vm.dialogCall,
+            callback: function($$v) {
+              _vm.dialogCall = $$v
+            },
+            expression: "dialogCall"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "headline" }, [
+                _vm._v("Make a call ")
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      placeholder: "Connecting to Twilio...",
+                      label: "Status",
+                      disabled: ""
+                    },
+                    model: {
+                      value: _vm.callStatus,
+                      callback: function($$v) {
+                        _vm.callStatus = $$v
+                      },
+                      expression: "callStatus"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-btn", { attrs: { disabled: "" } }, [
+                    _vm._v(" Answer call")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { disabled: "" },
+                      on: {
+                        click: function($event) {
+                          return _vm.hangUp()
+                        }
+                      }
+                    },
+                    [_vm._v(" Hang up")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "green darken-1", text: "" },
+                      on: { click: _vm.closeCall }
                     },
                     [_vm._v("Close")]
                   )
