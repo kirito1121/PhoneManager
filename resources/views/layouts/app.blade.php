@@ -42,6 +42,9 @@
                             <a class="nav-link" href="/dashboard">DashBoard</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/index">API</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/sms">SMS</a>
                         </li>
                         <li class="nav-item">

@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +23,7 @@ Route::get("twilio/voice/get", "TwilioVoiceController@get");
 Route::get("twilio/voice/recording", "TwilioVoiceController@recordingVoice");
 Route::get("twilio/voice/fetchRecording", "TwilioVoiceController@fetchRecording");
 Route::post("token", "TokenController@newToken");
+
+Route::post("google/indexing/update", "GoogleIndexingController@update");
+Route::get("google/indexing/index", "GoogleIndexingController@index");
+Route::get("google/webMaster/getSiteMap", "GoogleIndexingController@getSiteMap");

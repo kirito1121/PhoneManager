@@ -26,3 +26,6 @@ Route::get('/voice', function () {
 Route::get('/dashboard', function () {
     return view('Dashboard');
 });
+Route::get('/index', function () {
+    return view('api');
+});

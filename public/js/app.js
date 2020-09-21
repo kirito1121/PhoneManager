@@ -2124,7 +2124,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    indexing: function indexing() {
+      var _this = this;
+
+      axios.post("api/google/indexing/update").then(function (response) {
+        _this.data = response.data;
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getindex: function getindex() {
+      var _this2 = this;
+
+      axios.get("api/google/indexing/index").then(function (response) {
+        _this2.data = response.data;
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    sitemap: function sitemap() {
+      var _this3 = this;
+
+      axios.get("api/google/webMaster/getSiteMap").then(function (response) {
+        _this3.data = response.data;
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -39141,19 +39176,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c(
+          "div",
+          { staticClass: "card" },
+          [
             _c("div", { staticClass: "card-header" }, [
               _vm._v("Example Component")
+            ]),
+            _vm._v(" "),
+            _c("v-btn", { on: { click: _vm.indexing } }, [
+              _vm._v(" Test API ")
+            ]),
+            _vm._v(" "),
+            _c("v-btn", { on: { click: _vm.getindex } }, [_vm._v(" Get API ")]),
+            _vm._v(" "),
+            _c("v-btn", { on: { click: _vm.sitemap } }, [
+              _vm._v(" Get sitemap ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
@@ -39161,12 +39202,14 @@ var staticRenderFns = [
                 "\n                    I'm an example component.\n                "
               )
             ])
-          ])
-        ])
+          ],
+          1
+        )
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -96736,7 +96779,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('api-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('sms-component', __webpack_require__(/*! ./components/SMSComponent.vue */ "./resources/js/components/SMSComponent.vue")["default"]);
 Vue.component('voice-component', __webpack_require__(/*! ./components/VoiceComponent.vue */ "./resources/js/components/VoiceComponent.vue")["default"]);
 /**
@@ -97055,8 +97098,8 @@ var opts = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\laragon\www\phone\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\laragon\www\phone\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\laragon\www\sms\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\sms\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

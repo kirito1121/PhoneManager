@@ -30,4 +30,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'googleAPI' => [
+        'auth_config' => storage_path('google_auth_config.json'),
+
+        'scopes' => [
+            Google_Service_Indexing::INDEXING,
+            Google_Service_Webmasters::WEBMASTERS,
+        ],
+    ],
 ];
