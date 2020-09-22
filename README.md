@@ -21,3 +21,5 @@ yarn dev or npm run dev
 
 TWILIO_SID và
 TWILIO_TOKEN
+
+https://github.com/googleapis/google-api-php-client/issues/1567
