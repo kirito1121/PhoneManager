@@ -24,7 +24,7 @@ class GoogleIndex
 
         $this->googleClient->setAuthConfig(config('services.googleAPI.auth_config'));
 
-        foreach (config('services.googleAPI.auth_config', []) as $scope) {
+        foreach (config('services.googleAPI.scopes', []) as $scope) {
             $this->googleClient->addScope($scope);
         }
 

@@ -1,12 +1,12 @@
 {
-  "type": "service_account",
-  "project_id": "usastatesshop",
-  "private_key_id": "935fe32d179f261497646af313b53935760cfc48",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDgrNIvniQjLYUk\nqFTtt20B1CamEFUjjduq0C6CeRxSKWYAppCS4O+qutS7D0pVVEM2R2ML2wKpcMeU\nC0piNOUZ+TcTRr3vXhj0SQ0P8Fkp21x6EsLOqncAa10bjBxI5iB+LInKS4fd0LDe\nuFQUnohMECWGSq3BZjBbl1QAJzZ/1Sbgqm/ZqsXjy6je7k1McgNylJmTSzHqZ800\ntt3zKzzZ75a3qRs2Ub4sIfxyJ9j+egAY8RB1NgGk12A/8uymltAXCzPTdJbj1Mnc\nZB2sJ8jgbeFRQNmSWs00KzjfAvWqG2TU/bExsuwaiqILChL+7DCOFzuoqXOBxBbu\nc1wVY+k7AgMBAAECggEANl+MxIpkm4DWMo9sclVMU794lQLp399idJ3KS7gssvOi\n5HBrF6jJR8vMVPL33du1Ims3XLSlmcUZ/8mVuFutwFHwUsFxkP74UhJlz2Au6/LT\nGBX3QFW/1AGnuFV5uOi8n1x/Ak6yNGvfih8Y9h6BxMq5khz7nQzykg/2+8yBo4DJ\niIL8KvQbHy3AvS6ClV4fHe6FVPRzqtJJxg1QHC5/bso1zm1eHJIKdE78K50tAeyO\ncYJ8+Cy3TYf2LcWT8qzW4ebZfq2opIQlbe/D1fZhxlxI6APgofH7c3CUjcvvsiOO\nZKQIg7DrGT0YszGHn7sOdds9MCoM/0qYKusz/y/VjQKBgQD/Ip8OgxdbUm8Ttk4v\nDpYt9c041/rn4NAb5Yafpnd0w4YTe7hmTuVy/DwAckpkZCjyTXjDUc8HzhIxHrq/\nvCtHXnL0pgTXGbhXTrjtWGv0c/AHbEsUzqa8fDTx++IiSXMFqlYzol3xFzsv+3JA\n62kpaMDgUvXyMstlxKF9Bz4yNQKBgQDhb8ULSv+fXArzxtU1cibAWaum40PymUcs\nTeNB7m48x8Ww1mmLKDF8DCnt2bwt7dPki83OofmO7UYznPVK9SQUAOrlpPjmWt1U\nfW2RMSYQcG3RsKbD88TDuoUS8sbdj6fKSAgVB2dmhhZhiUQmaEWeECQuv2D1da76\nXpHd2sQbrwKBgGkyTz7ekmzXCnGoQ4hnjUiaBuofM5cUPPqjouSE8NA2Jjw2UQvu\nD/FfSyYr+bx3B+MQSnDOdHyVXS7fqsSPw5CDwwZYxbojIrzs+pbyVGDQxPFql3KW\n2mzxEauM3eqhOknlt/FGS1Gy8HaSSMO3zP6D8LMNwdcBVpg5gRRaPizZAoGAHAAR\n7VEnZte71IOBv92pyoJYu6XGrr8zA+G4tFu0/X+iolA/U7VuUAYCvzQoF1xO0Tg8\nG8oqgQIfkhGQtfq0vHdQta1D7PikPPZHQZ1lKO2N9lmGnRgN/HGSTcQxxxsssAc6\nWcJNqYJGDV9LQ6n326YNmHDUzigLz7UnUPL3IKkCgYAYzKbTtZsEuGQ14MzirwSO\ni3Xxc2erxTO5GAiFnEJf+qF11QplBallGizbYfFT3/us+1sk717J80BCAT8ChEm8\nf/4MrUrMLXuHatKqxHUQWTQDA4WBbivuy2fFNzLgmUbZmnayf2B2mt5GmeHUdXGt\n7owd0UxyE7SgxN5HzE9r7g==\n-----END PRIVATE KEY-----\n",
-  "client_email": "usastatesshop@usastatesshop.iam.gserviceaccount.com",
-  "client_id": "116091165049136114532",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/usastatesshop%40usastatesshop.iam.gserviceaccount.com"
-}
+    "type": "service_account",
+    "project_id": "rank-math-seo-289809",
+    "private_key_id": "fa534d94687ab461b92c44f372117e46c13e815d",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCF51zG3YfeQNCG\n4gc5YZwzC1CUic2HE6GppsnXBiy08Z0HdzoVvyQgbz7AfOEzhCvMcmRTVXQmPEu7\nhdRSQ963yDfHYeQefJKP7JrVVAoGObgNV2z5SQxoDLNvF1Y07owBY417pbVMJKgK\n+2bIRG1Dia4n9W6MLouZCLeCRPgwvuCRNY/GP9XpKNrA6L0jRWyvBOhY5aeO4hS9\neSapizBSFs/mylWTS5yDEQ8rtz4+TggzSjlYfTxl13JSgXjnf9GwW/j5HJDZl5zd\nD99hInCuVIUqKZeBlXQ6Y1ePB2myAZo3d5OQub2gZN/utRxdC+/SxWDQ+WirIoM3\nld5bBS4PAgMBAAECggEAALOrPVGY7jXJwgM6RXc5Ad170SN9w8j7DnAU278pCdPA\nXnMmB0omrtLWcdzVs1bsgdhRpUwr3S1wui1j5QB9ENqITE+7idteS0nSr+6OVOUF\njXBZXl8fJQZ4BEuLhKCBdFpoue6u6hTBGrmhmsgdCH8WvhffufVefvFYQOMKp/q+\nMqY1S6CuGZMaEs889319urU6XrwDV/0QRLTdnLZOI8G3PEdcYkiS4BA2HOAO8RLk\nAAsSvMZj9N4WzX+MsN952pNOpKq9KA9nT/ckkN6DPOAK7TvhNQGtkChFPMPZsBmO\nTp7zMpWwJ9keNe+Ioe0v86V7ZOgpyOGzz5JZxe9V8QKBgQC8Vb6EAeRrMeCZYmYu\nAYgOfD3BiaAmAMP8BFS6X4uiABWH9u/CTaPZbxetX/XtOwJ1+7kD2WiRWObvD299\nWzX4uiQfAge5DXThqCt6wNCA1FpU50j9B2WE+BisTbZYUqJp7kUN+kfokAWRP4Ql\n2xBEdAz46GMKwBX/pelkZInw/wKBgQC2A0RorOY9b/Vriv5wxziL4lIWEbAFd3S6\nnjZx0hJMUV4Sp32rA1ugUiO7Ked2LYcjOKFlTor+VBQopY5NNnVG2ccnHqsldIWT\nD0oZWFfRwG3aWWE01TIeVWuKEG+oswhvISJC3DZne3yzoNlXy4bAu+2pkzYVl/YD\nLa/yHGiy8QKBgA7R3HT8xSGeQiMvuASkwDULl7xz/PMgmktpd9VWkWFFCmyxhLpQ\na7U/ZaiR5YMuYoowLaXc5LqTOVDUcRx3Ie8ZjqAWA8+O/ISJPCqjo4SPsS//JyIq\nA9YLw71DPDcFAZy+UBbCfAgT1SxRyC9GZqhMTX0EpE6DQPfl8VCiDKy3AoGABftx\ngic8ogROAqzc1AQYPbDAle0a5fMZKREOJQuMgmmiN+a9YKOJnWlVt08XRnEUofm4\nhEXil51X1EYsuSjzDdMWkpiVc3Oy+DRmcRLQQBqdAbIyWbQwI4MXN8B2iwrnWg+y\nupPWTexnGthMjHAqC6ehlhM6kdcexNf5knGQl2ECgYB7CKC5FOXJII7/u6x09sYk\nVngyZkAx5/8e8LtiRY7D7LoVW7ACNEzHDMKRidH566TEZPEUmY6IBkk35KPi8dY2\nrg/ygqxPDK3+HHJfcOonumrTZJnzp0/QVZs1csMnc/w7mjH1g8NuUHWCosNZtI17\nYJnQQOlLsOZv64cnJmFQzQ==\n-----END PRIVATE KEY-----\n",
+    "client_email": "pridecouple@rank-math-seo-289809.iam.gserviceaccount.com",
+    "client_id": "100158109910755017588",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pridecouple%40rank-math-seo-289809.iam.gserviceaccount.com"
+  }
